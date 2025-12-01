@@ -31,17 +31,8 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Right Section - Background Video (full width) */}
-            <div className="hidden lg:block relative bg-white overflow-hidden min-h-full">
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="absolute inset-0 w-full h-full object-cover"
-              >
-                <source src="/last video.mp4" type="video/mp4" />
-              </video>
+            {/* Right Section - Empty space for layout balance */}
+            <div className="hidden lg:block relative bg-white min-h-full">
             </div>
           </div>
         </div>
