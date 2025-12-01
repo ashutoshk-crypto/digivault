@@ -22,7 +22,7 @@ export function CredibilityScore({ score }: CredibilityScoreProps) {
   return (
     <div className="bg-gray-800 rounded-lg p-4">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold text-white">Credibility Analysis</h3>
+        <h3 className="text-lg font-semibold text-white">AI Score Analysis</h3>
         <div className={`text-2xl font-bold ${getScoreColor(score.overall_score)}`}>
           {score.overall_score.toFixed(0)}%
         </div>

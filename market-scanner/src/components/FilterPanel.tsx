@@ -7,10 +7,11 @@ interface FilterPanelProps {
   filterState: FilterState;
   onFilterChange: (newFilterState: FilterState) => void;
   onReset: () => void;
+  isCryptoScanner?: boolean;
 }
 
-export function FilterPanel({ filterState, onFilterChange, onReset }: FilterPanelProps) {
-  const [activeTab, setActiveTab] = useState<'fundamental' | 'technical'>('fundamental');
+export function FilterPanel({ filterState, onFilterChange, onReset, isCryptoScanner = false }: FilterPanelProps) {
+  const [activeTab, setActiveTab] = useState<'fundamental' | 'technical'>(isCryptoScanner ? 'technical' : 'fundamental');
   const [isExpanded, setIsExpanded] = useState(true);
 
   const updateFundamentalFilter = (key: keyof FundamentalFilters, value: any) => {
@@ -98,19 +99,21 @@ export function FilterPanel({ filterState, onFilterChange, onReset }: FilterPane
         <div className="p-6">
           {/* Tab Navigation */}
           <div className="flex space-x-1 mb-6 bg-gray-700 rounded-lg p-1">
-            <button
-              onClick={() => setActiveTab('fundamental')}
-              className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
-                activeTab === 'fundamental'
-                  ? 'bg-blue-500 text-white'
-                  : 'text-gray-300 hover:text-white'
-              }`}
-            >
-              Fundamental
-            </button>
+            {!isCryptoScanner && (
+              <button
+                onClick={() => setActiveTab('fundamental')}
+                className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
+                  activeTab === 'fundamental'
+                    ? 'bg-blue-500 text-white'
+                    : 'text-gray-300 hover:text-white'
+                }`}
+              >
+                Fundamental
+              </button>
+            )}
             <button
               onClick={() => setActiveTab('technical')}
-              className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
+              className={`${isCryptoScanner ? 'w-full' : 'flex-1'} py-2 px-4 rounded-md text-sm font-medium transition-colors ${
                 activeTab === 'technical'
                   ? 'bg-blue-500 text-white'
                   : 'text-gray-300 hover:text-white'

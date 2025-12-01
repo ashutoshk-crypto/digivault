@@ -215,7 +215,12 @@ export const filterLogic: Record<string, FilterFunction> = {
 
   priceAllTimeHigh: getEnhancedDiversityFilter((data) => 
     data
-      .filter(asset => asset.asset_type === 'equity' && asset.close >= 0.98 * asset['52w_high'])
+      .filter(asset => 
+        asset.asset_type === 'equity' && 
+        asset.close > 0 && 
+        asset['52w_high'] > 0 && 
+        asset.close >= 0.98 * asset['52w_high']
+      )
       .sort((a, b) => b.pct_from_52w_high - a.pct_from_52w_high)
       .slice(0, 50)
   , 50, 4),

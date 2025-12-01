@@ -349,8 +349,8 @@ export async function fetchFundamentalData(): Promise<FundamentalData[]> {
     
     // Filter-Friendly Stocks - These will always match certain filter criteria
     {
-      symbol: 'FILTER1',
-      name: 'High Growth Tech Ltd.',
+      symbol: 'ZOMATO',
+      name: 'Zomato Ltd.',
       sector: 'Technology',
       price: 2500.00,
       market_cap: 15000, // Small cap
@@ -363,9 +363,9 @@ export async function fetchFundamentalData(): Promise<FundamentalData[]> {
       updated_at: '2024-01-15T10:00:00Z'
     },
     {
-      symbol: 'FILTER2',
-      name: 'Value Stock Corp.',
-      sector: 'Finance',
+      symbol: 'PAYTM',
+      name: 'One97 Communications Ltd.',
+      sector: 'Financial',
       price: 1800.00,
       market_cap: 25000, // Mid cap
       pe: 12.0, // Moderate P/E
@@ -377,9 +377,9 @@ export async function fetchFundamentalData(): Promise<FundamentalData[]> {
       updated_at: '2024-01-15T10:00:00Z'
     },
     {
-      symbol: 'FILTER3',
-      name: 'Large Cap Giant Inc.',
-      sector: 'Energy',
+      symbol: 'ADANIPORTS',
+      name: 'Adani Ports and Special Economic Zone Ltd.',
+      sector: 'Infrastructure',
       price: 4500.00,
       market_cap: 250000, // Large cap
       pe: 6.5, // Very low P/E
@@ -391,8 +391,8 @@ export async function fetchFundamentalData(): Promise<FundamentalData[]> {
       updated_at: '2024-01-15T10:00:00Z'
     },
     {
-      symbol: 'FILTER4',
-      name: 'Growth Champion Ltd.',
+      symbol: 'BIOCON',
+      name: 'Biocon Ltd.',
       sector: 'Healthcare',
       price: 3200.00,
       market_cap: 8000, // Small cap
@@ -405,8 +405,8 @@ export async function fetchFundamentalData(): Promise<FundamentalData[]> {
       updated_at: '2024-01-15T10:00:00Z'
     },
     {
-      symbol: 'FILTER5',
-      name: 'Dividend King Corp.',
+      symbol: 'POWERGRID',
+      name: 'Power Grid Corporation of India Ltd.',
       sector: 'Utilities',
       price: 1200.00,
       market_cap: 12000, // Small cap
@@ -789,7 +789,7 @@ export async function fetchTechnicalData(): Promise<TechnicalData[]> {
     // Filter-Friendly Technical Data - These will always match certain technical filter criteria
     {
       date: '2024-01-15',
-      symbol: 'FILTER1',
+      symbol: 'ZOMATO',
       close: 2500.00,
       volume: 5000000,
       ma50: 2400.00, // Price above MA50
@@ -805,7 +805,7 @@ export async function fetchTechnicalData(): Promise<TechnicalData[]> {
     },
     {
       date: '2024-01-15',
-      symbol: 'FILTER2',
+      symbol: 'PAYTM',
       close: 1800.00,
       volume: 3000000,
       ma50: 1750.00, // Price above MA50
@@ -821,7 +821,7 @@ export async function fetchTechnicalData(): Promise<TechnicalData[]> {
     },
     {
       date: '2024-01-15',
-      symbol: 'FILTER3',
+      symbol: 'ADANIPORTS',
       close: 4500.00,
       volume: 8000000,
       ma50: 4200.00, // Price above MA50
@@ -837,7 +837,7 @@ export async function fetchTechnicalData(): Promise<TechnicalData[]> {
     },
     {
       date: '2024-01-15',
-      symbol: 'FILTER4',
+      symbol: 'BIOCON',
       close: 3200.00,
       volume: 2000000,
       ma50: 3000.00, // Price above MA50
@@ -853,7 +853,7 @@ export async function fetchTechnicalData(): Promise<TechnicalData[]> {
     },
     {
       date: '2024-01-15',
-      symbol: 'FILTER5',
+      symbol: 'POWERGRID',
       close: 1200.00,
       volume: 1500000,
       ma50: 1100.00, // Price above MA50

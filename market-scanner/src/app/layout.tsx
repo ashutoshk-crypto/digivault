@@ -15,32 +15,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Market Scanners - Real-time Stock & Crypto Analysis",
-  description: "Discover the best investment opportunities with our real-time market scanners. Filter stocks and crypto by technical and fundamental parameters.",
-  keywords: "stock scanner, crypto scanner, market analysis, technical analysis, fundamental analysis, investment opportunities",
-  authors: [{ name: "Market Scanners Team" }],
-  openGraph: {
-    title: "Market Scanners - Real-time Stock & Crypto Analysis",
-    description: "Discover the best investment opportunities with our real-time market scanners.",
-    type: "website",
-    locale: "en_US",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Market Scanners - Real-time Stock & Crypto Analysis",
-    description: "Discover the best investment opportunities with our real-time market scanners.",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
+  title: "Digivault Custody",
+  description: "Digivault Custody - Secure digital asset custody solutions",
 };
 
 export default function RootLayout({

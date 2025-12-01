@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { MergedAssetData, FilterState, ScanConfig } from '@/types';
 import { applyFilter, applyAllFilters, defaultFilterState } from '@/utils/filters';
 import { ScannerTable } from './ScannerTable';
@@ -10,6 +10,7 @@ import { RelatedScans } from './RelatedScans';
 import { NewsFeed } from './NewsFeed';
 import { WhaleTracker } from './WhaleTracker';
 import { CredibilityScore } from './CredibilityScore';
+import { useScannerData } from '@/contexts/ScannerDataContext';
 
 interface ScannerPageWithFiltersProps {
   scan: ScanConfig;
@@ -32,6 +33,7 @@ export function ScannerPageWithFilters({
 }: ScannerPageWithFiltersProps) {
   const [filterState, setFilterState] = useState<FilterState>(defaultFilterState);
   const [showFilters, setShowFilters] = useState(false);
+  const { setCurrentData } = useScannerData();
 
   // Apply both the original scanner logic and the new filters
   const filteredData = useMemo(() => {
@@ -41,6 +43,11 @@ export function ScannerPageWithFilters({
     // Then apply the additional filters
     return applyAllFilters(scannerFilteredData, filterState);
   }, [allData, scan.logic_key, filterState]);
+
+  // Update current data for watchlist
+  useEffect(() => {
+    setCurrentData(filteredData);
+  }, [filteredData, setCurrentData]);
 
   const handleFilterChange = (newFilterState: FilterState) => {
     setFilterState(newFilterState);
@@ -56,9 +63,7 @@ export function ScannerPageWithFilters({
       <header className="bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <nav className="flex items-center space-x-4 text-sm text-gray-400 mb-4">
-            <a href="/" className="hover:text-white">Home</a>
-            <span>/</span>
-            <span className="text-white">Scanners</span>
+            <a href="/" className="text-white hover:text-gray-300">Scanners</a>
             <span>/</span>
             <span className="text-white">{scan.scan_name}</span>
           </nav>
@@ -88,6 +93,7 @@ export function ScannerPageWithFilters({
               filterState={filterState}
               onFilterChange={handleFilterChange}
               onReset={handleResetFilters}
+              isCryptoScanner={scan.category === 'crypto' || scan.category === 'cross-asset'}
             />
           </div>
         )}

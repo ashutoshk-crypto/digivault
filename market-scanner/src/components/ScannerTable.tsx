@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { MergedAssetData } from '@/types';
 import { formatMarketCapInCrores } from '@/utils/data';
+import { WatchlistIcon } from './WatchlistIcon';
 
 interface ScannerTableProps {
   data: MergedAssetData[];
@@ -80,38 +81,38 @@ export function ScannerTable({ data }: ScannerTableProps) {
   };
 
   return (
-    <div className="overflow-x-auto">
+    <div className="w-full">
       {/* Single scrollable container with both header and body */}
       <div className="max-h-96 overflow-y-auto bg-gray-800">
-        <table className="min-w-full divide-y divide-gray-700">
+        <table className="w-full divide-y divide-gray-700 table-fixed">
           <thead className="bg-gray-700 sticky top-0 z-10">
             <tr>
               <th 
-                className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider cursor-pointer hover:bg-gray-600"
+                className="w-20 px-3 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider cursor-pointer hover:bg-gray-600"
                 onClick={() => handleSort('symbol')}
               >
                 Symbol {getSortIcon('symbol')}
               </th>
               <th 
-                className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider cursor-pointer hover:bg-gray-600"
+                className="w-32 px-3 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider cursor-pointer hover:bg-gray-600"
                 onClick={() => handleSort('name')}
               >
                 Name {getSortIcon('name')}
               </th>
               <th 
-                className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider cursor-pointer hover:bg-gray-600"
+                className="w-16 px-3 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider cursor-pointer hover:bg-gray-600"
                 onClick={() => handleSort('asset_type')}
               >
                 Type {getSortIcon('asset_type')}
               </th>
               <th 
-                className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider cursor-pointer hover:bg-gray-600"
+                className="w-20 px-3 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider cursor-pointer hover:bg-gray-600"
                 onClick={() => handleSort('price')}
               >
                 Price {getSortIcon('price')}
               </th>
               <th 
-                className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider cursor-pointer hover:bg-gray-600"
+                className="w-24 px-3 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider cursor-pointer hover:bg-gray-600"
                 onClick={() => handleSort('market_cap')}
               >
                 <div className="flex items-center whitespace-nowrap">
@@ -120,7 +121,7 @@ export function ScannerTable({ data }: ScannerTableProps) {
                 </div>
               </th>
               <th 
-                className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider cursor-pointer hover:bg-gray-600"
+                className="w-20 px-3 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider cursor-pointer hover:bg-gray-600"
                 onClick={() => handleSort('daily_change_pct')}
               >
                 <div className="flex items-center whitespace-nowrap">
@@ -129,22 +130,25 @@ export function ScannerTable({ data }: ScannerTableProps) {
                 </div>
               </th>
               <th 
-                className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider cursor-pointer hover:bg-gray-600"
+                className="w-20 px-3 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider cursor-pointer hover:bg-gray-600"
                 onClick={() => handleSort('credibility_score')}
               >
                 <div className="flex items-center whitespace-nowrap">
-                  <span>Credibility</span>
+                  <span>AI Score</span>
                   <span className="ml-1">{getSortIcon('credibility_score')}</span>
                 </div>
               </th>
               <th 
-                className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider cursor-pointer hover:bg-gray-600"
+                className="w-20 px-3 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider cursor-pointer hover:bg-gray-600"
                 onClick={() => handleSort('news_sentiment')}
               >
                 <div className="flex items-center whitespace-nowrap">
                   <span>Sentiment</span>
                   <span className="ml-1">{getSortIcon('news_sentiment')}</span>
                 </div>
+              </th>
+              <th className="w-16 px-3 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                Watchlist
               </th>
             </tr>
           </thead>
@@ -162,14 +166,14 @@ export function ScannerTable({ data }: ScannerTableProps) {
                   }
                 }}
               >
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm font-medium text-white">{asset.symbol}</div>
+                <td className="w-20 px-3 py-4">
+                  <div className="text-sm font-medium text-white truncate">{asset.symbol}</div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-white">{asset.name}</div>
+                <td className="w-32 px-3 py-4">
+                  <div className="text-sm text-white truncate" title={asset.name}>{asset.name}</div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className={`text-sm font-medium px-2 py-1 rounded-full ${
+                <td className="w-16 px-3 py-4">
+                  <div className={`text-xs font-medium px-2 py-1 rounded-full ${
                     asset.asset_type === 'crypto' 
                       ? 'bg-purple-100 text-purple-800' 
                       : 'bg-blue-100 text-blue-800'
@@ -177,39 +181,61 @@ export function ScannerTable({ data }: ScannerTableProps) {
                     {asset.asset_type === 'crypto' ? 'Crypto' : 'Equity'}
                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-white">
+                <td className="w-20 px-3 py-4">
+                  <div className="text-sm text-white truncate">
                     {asset.asset_type === 'crypto' 
                       ? formatCryptoPrice(asset.price)
                       : `₹${asset.price.toFixed(2)}`
                     }
                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-white">
+                <td className="w-24 px-3 py-4">
+                  <div className="text-sm text-white truncate">
                     {asset.asset_type === 'crypto' 
                       ? formatMarketCapInCrores(asset.market_cap * 83)
                       : formatMarketCapInCrores(asset.market_cap)
                     }
                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
+                <td className="w-20 px-3 py-4">
                   <div className={`text-sm font-medium flex items-center ${
                     (asset.daily_change_pct || 0) >= 0 ? 'text-green-400' : 'text-red-400'
                   }`}>
-                    {(asset.daily_change_pct || 0) >= 0 ? '↗' : '↘'}
-                    {formatPercentage(asset.daily_change_pct || 0)}
+                    <span className="truncate">
+                      {(asset.daily_change_pct || 0) >= 0 ? '↗' : '↘'}
+                      {formatPercentage(asset.daily_change_pct || 0)}
+                    </span>
                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
+                <td className="w-20 px-3 py-4">
                   <div className={`text-sm font-medium ${getCredibilityColor(asset.credibility_score || 0)}`}>
                     {asset.credibility_score ? `${asset.credibility_score.toFixed(0)}%` : 'N/A'}
                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
+                <td className="w-20 px-3 py-4">
                   <div className={`text-sm font-medium ${getSentimentColor(asset.news_sentiment || 'neutral')}`}>
                     {asset.news_sentiment ? asset.news_sentiment.charAt(0).toUpperCase() + asset.news_sentiment.slice(1) : 'Neutral'}
                   </div>
+                </td>
+                <td className="w-16 px-3 py-4">
+                  <WatchlistIcon 
+                    item={{
+                      id: asset.symbol,
+                      symbol: asset.symbol,
+                      name: asset.name,
+                      price: asset.price,
+                      change: asset.daily_change || 0,
+                      changePercent: asset.daily_change_pct || 0,
+                      marketCap: asset.asset_type === 'crypto' 
+                        ? formatMarketCapInCrores(asset.market_cap * 83)
+                        : formatMarketCapInCrores(asset.market_cap),
+                      volume: asset.asset_type === 'crypto' 
+                        ? formatNumber(asset.volume_24h || 0)
+                        : formatNumber(asset.volume || 0),
+                      type: asset.asset_type as 'equity' | 'crypto'
+                    }}
+                    size="sm"
+                  />
                 </td>
               </tr>
             ))}
