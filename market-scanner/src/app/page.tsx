@@ -6,10 +6,11 @@ import OperationsExcellence from "@/components/OperationsExcellence";
 import WhoWeServe from "@/components/WhoWeServe";
 import CTABanner from "@/components/CTABanner";
 import Footer from "@/components/Footer";
+import StickyMobileCTA from "@/components/StickyMobileCTA";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white relative">
+    <div className="min-h-screen bg-white relative pb-20 lg:pb-0">
       <Header />
       <Hero />
       <WhyChooseUs />
@@ -18,6 +19,7 @@ export default function Home() {
       <WhoWeServe />
       <CTABanner />
       <Footer />
+      <StickyMobileCTA />
     </div>
   );
 }

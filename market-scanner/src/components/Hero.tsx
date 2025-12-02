@@ -1,9 +1,115 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
+// Counter hook for animating numbers
+function useCounter(targetValue: string, duration: number = 2000, isVisible: boolean) {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    // Parse the target value to extract the number
+    const parseValue = (value: string): number => {
+      // Remove currency symbols, ~, +, and spaces
+      let clean = value.replace(/[~$₹+\s,]/g, '');
+      
+      // Handle CR (Crores - 10 million)
+      if (clean.includes('CR')) {
+        const num = parseFloat(clean.replace('CR', ''));
+        return num * 10000000;
+      }
+      
+      // Handle M (Millions)
+      if (clean.includes('M')) {
+        const num = parseFloat(clean.replace('M', ''));
+        return num * 1000000;
+      }
+      
+      // Handle B (Billions)
+      if (clean.includes('B')) {
+        const num = parseFloat(clean.replace('B', ''));
+        return num * 1000000000;
+      }
+      
+      // Handle K (Thousands)
+      if (clean.includes('K')) {
+        const num = parseFloat(clean.replace('K', ''));
+        return num * 1000;
+      }
+      
+      return parseFloat(clean) || 0;
+    };
+
+    const targetNum = parseValue(targetValue);
+    const startTime = Date.now();
+    const startValue = 0;
+
+    const animate = () => {
+      const now = Date.now();
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // Easing function for smooth animation
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      const currentValue = startValue + (targetNum - startValue) * easeOutQuart;
+      
+      setCount(currentValue);
+      
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        setCount(targetNum);
+      }
+    };
+
+    requestAnimationFrame(animate);
+  }, [targetValue, duration, isVisible]);
+
+  return count;
+}
+
+// Counter component for each milestone
+function CounterDisplay({ targetValue, isVisible }: { targetValue: string; isVisible: boolean }) {
+  const count = useCounter(targetValue, 2000, isVisible);
+
+  const formatDisplay = (num: number, original: string): string => {
+    // Check if original had CR
+    if (original.includes('CR')) {
+      const crValue = num / 10000000;
+      if (original.includes('₹')) {
+        return `₹${crValue.toLocaleString('en-IN', { maximumFractionDigits: 0 })}CR${original.includes('+') ? '+' : ''}`;
+      }
+      return `${crValue.toLocaleString('en-IN', { maximumFractionDigits: 1 })}CR${original.includes('+') ? '+' : ''}`;
+    }
+    
+    // Check if original had M
+    if (original.includes('M')) {
+      const mValue = num / 1000000;
+      if (original.includes('$')) {
+        return `$${mValue.toLocaleString('en-IN', { maximumFractionDigits: 0 })}M${original.includes('+') ? '+' : ''}`;
+      }
+      return `${mValue.toLocaleString('en-IN', { maximumFractionDigits: 1 })}M${original.includes('+') ? '+' : ''}`;
+    }
+    
+    // Check if original had B
+    if (original.includes('B')) {
+      const bValue = num / 1000000000;
+      const prefix = original.includes('~') ? '~' : '';
+      const currency = original.includes('$') ? '$' : '';
+      return `${prefix}${currency}${bValue.toLocaleString('en-IN', { maximumFractionDigits: 1 })}B`;
+    }
+    
+    return num.toLocaleString('en-IN', { maximumFractionDigits: 0 });
+  };
+
+  return <>{formatDisplay(count, targetValue)}</>;
+}
 
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const statsRef = useRef<HTMLDivElement>(null);
+  const [isStatsVisible, setIsStatsVisible] = useState(false);
 
   useEffect(() => {
     // Ensure video plays when component mounts
@@ -37,6 +143,32 @@ export default function Hero() {
     };
     
     playVideo();
+  }, []);
+
+  // Intersection Observer for stats section
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsStatsVisible(true);
+            observer.disconnect();
+          }
+        });
+      },
+      {
+        threshold: 0.3, // Trigger when 30% of the element is visible
+        rootMargin: '0px 0px -100px 0px', // Start animation slightly before fully visible
+      }
+    );
+
+    if (statsRef.current) {
+      observer.observe(statsRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
   return (
@@ -94,7 +226,7 @@ export default function Hero() {
       </div>
 
       {/* Bottom Section - Statistical Cards */}
-      <div className="relative mx-auto mb-4 sm:mb-6 lg:mb-10 pb-4 sm:pb-6 px-4 sm:px-6 lg:px-8 w-full max-w-7xl">
+      <div ref={statsRef} className="relative mx-auto mb-4 sm:mb-6 lg:mb-10 pb-4 sm:pb-6 px-4 sm:px-6 lg:px-8 w-full max-w-7xl">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
           <div 
             className="rounded-lg p-3 sm:p-4 lg:p-6 text-left min-h-[90px] sm:min-h-[120px] lg:min-h-[165px] flex flex-col justify-center"
@@ -104,7 +236,7 @@ export default function Hero() {
             }}
           >
             <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-1 sm:mb-2">
-              $300M+
+              <CounterDisplay targetValue="$300M+" isVisible={isStatsVisible} />
             </div>
             <div className="text-black text-xs sm:text-sm md:text-base font-normal leading-tight">
               Raised from Top Global Investors
@@ -119,7 +251,7 @@ export default function Hero() {
             }}
           >
             <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-1 sm:mb-2">
-              ~$2B
+              <CounterDisplay targetValue="~$2B" isVisible={isStatsVisible} />
             </div>
             <div className="text-black text-xs sm:text-sm md:text-base font-normal leading-tight">
               Company Valuation
@@ -134,7 +266,7 @@ export default function Hero() {
             }}
           >
             <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-1 sm:mb-2">
-              2.5CR+
+              <CounterDisplay targetValue="2.5CR+" isVisible={isStatsVisible} />
             </div>
             <div className="text-black text-xs sm:text-sm md:text-base font-normal leading-tight">
               Users Across Platform
@@ -149,7 +281,7 @@ export default function Hero() {
             }}
           >
             <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-1 sm:mb-2">
-              ₹3,000CR+
+              <CounterDisplay targetValue="₹3,000CR+" isVisible={isStatsVisible} />
             </div>
             <div className="text-black text-xs sm:text-sm md:text-base font-normal leading-tight">
               Assets Under Management
