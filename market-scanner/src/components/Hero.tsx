@@ -57,9 +57,9 @@ export default function Hero() {
                   lineHeight: '1.1',
                   letterSpacing: '-0.02em'
                 }}>
-                  <span>Secure. Compliant.</span>
+                  <span style={{ whiteSpace: 'nowrap' }}>Secure. Compliant.</span>
                   <br />
-                  <span>Built for Scale.</span>
+                  <span>Built for India</span>
                 </h1>
                 <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-black mb-6 sm:mb-8 lg:mb-5 leading-relaxed font-normal">
                   The Next-Generation
