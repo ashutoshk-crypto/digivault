@@ -27,7 +27,7 @@ export default function WhoWeServe() {
   ];
 
   return (
-    <section id="audience" className="relative bg-white py-6 sm:py-8 lg:py-12 px-4 sm:px-6 lg:px-8">
+    <section id="audience" className="relative bg-white py-6 sm:py-8 lg:py-12 px-4 sm:px-6 lg:px-8" style={{ scrollMarginTop: '80px' }}>
       <div className="max-w-7xl mx-auto">
         {/* Title */}
         <div className="text-center mb-4 sm:mb-6 lg:mb-10">

@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export default function CTABanner() {
   return (
-    <section id="cta" className="relative bg-white py-6 sm:py-8 lg:py-12 px-4 sm:px-6 lg:px-8">
+    <section id="cta" className="relative bg-white py-6 sm:py-8 lg:py-12 px-4 sm:px-6 lg:px-8" style={{ scrollMarginTop: '80px' }}>
       <div className="max-w-7xl mx-auto">
         <Image
           src="/cta.png"

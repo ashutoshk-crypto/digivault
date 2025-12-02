@@ -7,6 +7,20 @@ export default function Footer() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const homeElement = document.getElementById('home');
+    if (homeElement) {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    } else {
+      // If we're on a different page, navigate to homepage
+      window.location.href = '/';
+    }
+  };
+
   return (
     <>
       {/* Back To Top Button */}
@@ -29,13 +43,19 @@ export default function Footer() {
           <div className="flex flex-col items-center text-center">
             {/* Logo */}
             <div className="mb-3 sm:mb-4">
-              <Image
-                src="/digivault-logo.png"
-                alt="Digivault Custody"
-                width={180}
-                height={54}
-                className="h-8 sm:h-10 md:h-12 w-auto mx-auto"
-              />
+              <a 
+                href="/" 
+                onClick={handleLogoClick}
+                className="inline-block cursor-pointer hover:opacity-90 transition-opacity"
+              >
+                <Image
+                  src="/digivault-logo.png"
+                  alt="Digivault"
+                  width={180}
+                  height={54}
+                  className="h-8 sm:h-10 md:h-12 w-auto mx-auto"
+                />
+              </a>
             </div>
             
             {/* Description - One Line */}

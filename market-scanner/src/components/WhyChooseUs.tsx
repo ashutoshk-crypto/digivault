@@ -2,7 +2,7 @@
 
 export default function WhyChooseUs() {
   return (
-    <section id="experience" className="relative bg-black py-6 sm:py-8 lg:py-12 px-4 sm:px-6 lg:px-8">
+    <section id="experience" className="relative bg-black py-6 sm:py-8 lg:py-12 px-4 sm:px-6 lg:px-8" style={{ scrollMarginTop: '80px' }}>
       {/* Background Pattern Image - Full Section */}
       <div 
         className="absolute inset-0 opacity-80"

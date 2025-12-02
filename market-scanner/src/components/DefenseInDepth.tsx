@@ -47,7 +47,7 @@ export default function DefenseInDepth() {
   // };
 
   return (
-    <section id="security" className="relative bg-white py-6 sm:py-8 lg:py-12 px-4 sm:px-6 lg:px-8">
+    <section id="security" className="relative bg-white py-6 sm:py-8 lg:py-12 px-4 sm:px-6 lg:px-8" style={{ scrollMarginTop: '80px' }}>
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center justify-center">
           <img 

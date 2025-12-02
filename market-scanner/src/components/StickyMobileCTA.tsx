@@ -2,10 +2,22 @@
 
 export default function StickyMobileCTA() {
   const handleConnect = () => {
-    // Scroll to CTA section or handle navigation
+    // Scroll to CTA section with proper header offset
     const ctaSection = document.getElementById('cta');
     if (ctaSection) {
-      ctaSection.scrollIntoView({ behavior: 'smooth' });
+      // Dynamically calculate header height to account for different screen sizes
+      const header = document.querySelector('header');
+      const headerHeight = header ? header.getBoundingClientRect().height : 80;
+      
+      // Get the target element's position relative to viewport
+      const elementPosition = ctaSection.getBoundingClientRect().top;
+      // Calculate scroll position accounting for header
+      const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+
+      window.scrollTo({
+        top: Math.max(0, offsetPosition), // Ensure we don't scroll to negative position
+        behavior: 'smooth'
+      });
     }
   };
 

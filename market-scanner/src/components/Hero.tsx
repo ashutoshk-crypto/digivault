@@ -172,7 +172,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="home" className="relative bg-white flex flex-col">
+    <section id="home" className="relative bg-white flex flex-col" style={{ scrollMarginTop: '80px' }}>
       {/* Thin light blue vertical line on the left */}
       <div className="absolute left-0 top-0 bottom-0 w-0.5 sm:w-1 bg-blue-300 z-10"></div>
       
