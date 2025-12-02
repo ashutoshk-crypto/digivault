@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Nexa';
+  font-weight: 800;
+  font-style: normal;
+  src: url('/fonts/Nexa-ExtraBold.woff2') format('woff2'),
+       url('/fonts/Nexa-ExtraBold.woff') format('woff'),
+       url('/fonts/Nexa-ExtraBold.ttf') format('truetype');
+  font-display: swap;
+}
+
 :root {
   --background: #1f2937;
   --foreground: #ffffff;

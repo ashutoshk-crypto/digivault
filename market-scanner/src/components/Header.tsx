@@ -8,7 +8,7 @@ export default function Header() {
 
   return (
     <header className="bg-black w-full">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center">
+      <nav className="w-full px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
         {/* Logo Section */}
         <div className="flex items-center flex-shrink-0">
           <Image
@@ -21,10 +21,7 @@ export default function Header() {
           />
         </div>
 
-        {/* Spacer */}
-        <div className="flex-grow"></div>
-
-        {/* Navigation Links */}
+        {/* Navigation Links and CTA */}
         <div className="flex items-center gap-8 flex-shrink-0">
           <div className="relative">
             <button
@@ -87,12 +84,12 @@ export default function Header() {
           >
             Audience
           </a>
-        </div>
 
-        {/* CTA Button */}
-        <button className="text-white font-sans text-base px-6 py-3 rounded-lg hover:opacity-90 transition-opacity ml-8 flex-shrink-0" style={{ background: 'linear-gradient(90deg, #04B9B2 0%, #1EC677 100%)' }}>
-          Connect With Us
-        </button>
+          {/* CTA Button */}
+          <button className="text-white font-sans text-base px-6 py-3 rounded-lg hover:opacity-90 transition-opacity flex-shrink-0" style={{ background: 'linear-gradient(90deg, #04B9B2 0%, #1EC677 100%)' }}>
+            Connect With Us
+          </button>
+        </div>
       </nav>
     </header>
   );

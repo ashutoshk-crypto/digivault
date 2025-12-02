@@ -1,6 +1,19 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
+
 export default function Hero() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    // Ensure video plays when component mounts
+    if (videoRef.current) {
+      videoRef.current.play().catch((error) => {
+        console.log('Video autoplay failed:', error);
+      });
+    }
+  }, []);
+
   return (
     <section className="relative bg-white flex flex-col">
       {/* Thin light blue vertical line on the left */}
@@ -8,18 +21,22 @@ export default function Hero() {
       
       <div className="flex items-center">
         <div className="w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[70vh] items-stretch">
+          <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[65vh] items-stretch">
             {/* Left Section - Text Content with White Background */}
-            <div className="bg-white flex items-center px-4 sm:px-6 lg:px-12 xl:px-16 py-12 pl-8 lg:pl-12">
-              <div className="text-left w-full max-w-2xl">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-black mb-6 leading-tight">
-                  Secure.
-                  <br />
-                  Compliant.
+            <div className="bg-white flex items-center px-4 sm:px-6 lg:px-12 xl:px-16 py-6 lg:py-8 pl-8 lg:pl-12 z-10">
+              <div className="text-left w-full max-w-2xl ml-auto lg:ml-20 xl:ml-30 2xl:ml-40">
+                <h1 className="text-black mb-4 lg:mb-5 whitespace-nowrap lg:whitespace-normal" style={{
+                  fontFamily: 'Nexa, sans-serif',
+                  fontWeight: 800,
+                  fontSize: '62px',
+                  lineHeight: '69.89px',
+                  letterSpacing: '-0.02em'
+                }}>
+                  <span className="whitespace-nowrap">Secure. Compliant.</span>
                   <br />
                   Built for Scale.
                 </h1>
-                <p className="text-lg md:text-xl lg:text-2xl text-black mb-6 leading-relaxed font-normal">
+                <p className="text-lg md:text-xl lg:text-2xl text-black mb-4 lg:mb-5 leading-relaxed font-normal">
                   The Next-Generation
                   <br />
                   Digital Asset Custody for India
@@ -31,8 +48,20 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Right Section - Empty space for layout balance */}
-            <div className="hidden lg:block relative bg-white min-h-full">
+            {/* Right Section - Background Video */}
+            <div className="hidden lg:block relative bg-white min-h-full overflow-hidden">
+              <video
+                ref={videoRef}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover"
+                preload="auto"
+              >
+                <source src="/last%20video.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </div>
           </div>
         </div>
