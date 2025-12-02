@@ -54,10 +54,10 @@ export default function Header() {
           {/* CTA Button */}
           <a 
             href="#cta" 
-            className="text-white font-sans text-sm xl:text-base px-4 xl:px-6 py-2 xl:py-3 rounded-lg hover:opacity-90 transition-opacity flex-shrink-0 inline-block text-center" 
+            className="text-black font-sans font-bold text-sm xl:text-base px-4 xl:px-6 py-2 xl:py-3 rounded-lg hover:opacity-90 transition-opacity flex-shrink-0 inline-block text-center" 
             style={{ background: 'linear-gradient(90deg, #04B9B2 0%, #1EC677 100%)' }}
           >
-            Connect With Us
+            Connect with Us
           </a>
         </div>
 
@@ -113,11 +113,11 @@ export default function Header() {
             </a>
             <a 
               href="#cta" 
-              className="w-full text-white font-sans text-base px-6 py-3 rounded-lg hover:opacity-90 transition-opacity mt-4 inline-block text-center" 
+              className="w-full text-black font-sans font-bold text-base px-6 py-3 rounded-lg hover:opacity-90 transition-opacity mt-4 inline-block text-center" 
               style={{ background: 'linear-gradient(90deg, #04B9B2 0%, #1EC677 100%)' }}
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Connect With Us
+              Connect with Us
             </a>
           </div>
         </div>

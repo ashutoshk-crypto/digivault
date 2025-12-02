@@ -68,7 +68,7 @@ export default function Hero() {
                 </p>
                 <button className="bg-black text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg flex items-center gap-3 hover:opacity-90 transition-opacity w-full sm:w-auto justify-center sm:justify-start">
                   <span className="w-3 h-3 bg-green-400 rounded-sm flex-shrink-0"></span>
-                  <span className="font-medium text-sm sm:text-base">Connect With Us</span>
+                  <span className="font-medium text-sm sm:text-base">Connect with Us</span>
                 </button>
               </div>
             </div>
