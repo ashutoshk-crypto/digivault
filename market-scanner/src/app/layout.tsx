@@ -75,15 +75,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: siteUrl,
   },
-  icons: {
-    icon: [
-      { url: '/icon.png', type: 'image/png', sizes: 'any' },
-    ],
-    apple: [
-      { url: '/icon.png', sizes: '180x180', type: 'image/png' },
-    ],
-    shortcut: '/icon.png',
-  },
   verification: {
     // Add your verification codes here when available
     // google: 'your-google-verification-code',
@@ -147,9 +138,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/icon.png" type="image/png" />
-        <link rel="shortcut icon" href="/icon.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/icon.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
