@@ -77,14 +77,12 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/digivault-logo.png', type: 'image/png', sizes: '32x32' },
-      { url: '/digivault-logo.png', type: 'image/png', sizes: '16x16' },
-      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon.png', type: 'image/png', sizes: 'any' },
     ],
     apple: [
-      { url: '/digivault-logo.png', sizes: '180x180', type: 'image/png' },
+      { url: '/icon.png', sizes: '180x180', type: 'image/png' },
     ],
-    shortcut: '/digivault-logo.png',
+    shortcut: '/icon.png',
   },
   verification: {
     // Add your verification codes here when available
@@ -149,6 +147,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="icon" href="/icon.png" type="image/png" />
+        <link rel="shortcut icon" href="/icon.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/icon.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}

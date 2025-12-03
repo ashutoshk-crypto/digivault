@@ -6,14 +6,19 @@ export default function CTABanner() {
   return (
     <section id="cta" className="relative bg-white py-6 sm:py-8 lg:py-12 px-4 sm:px-6 lg:px-8" style={{ scrollMarginTop: '80px' }}>
       <div className="max-w-7xl mx-auto">
-        <Image
-          src="/cta.png"
-          alt="Ready to See Digivault Custody at Work?"
-          width={1200}
-          height={400}
-          className="w-full h-auto rounded-xl sm:rounded-2xl"
-          priority
-        />
+        <div 
+          onClick={() => window.open('https://form.typeform.com/to/t6Xqnmr1', '_blank', 'noopener,noreferrer')}
+          className="cursor-pointer"
+        >
+          <Image
+            src="/cta.png"
+            alt="Ready to See Digivault Custody at Work?"
+            width={1200}
+            height={400}
+            className="w-full h-auto rounded-xl sm:rounded-2xl"
+            priority
+          />
+        </div>
       </div>
     </section>
   );

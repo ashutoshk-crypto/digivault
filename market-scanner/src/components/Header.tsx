@@ -99,12 +99,13 @@ export default function Header() {
 
           {/* CTA Button */}
           <a 
-            href="#cta" 
-            onClick={(e) => handleNavClick(e, 'cta')}
+            href="https://form.typeform.com/to/t6Xqnmr1"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-black font-sans font-bold text-sm xl:text-base px-4 xl:px-6 py-2 xl:py-3 rounded-lg hover:opacity-90 transition-opacity flex-shrink-0 inline-block text-center" 
             style={{ background: 'linear-gradient(90deg, #04B9B2 0%, #1EC677 100%)' }}
           >
-            Connect with Us
+            Request Demo
           </a>
         </div>
 
@@ -159,15 +160,16 @@ export default function Header() {
               Audience
             </a>
             <a 
-              href="#cta" 
-              onClick={(e) => handleNavClick(e, 'cta')}
+              href="https://form.typeform.com/to/t6Xqnmr1"
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-full py-3.5 sm:py-4 px-5 sm:px-6 rounded-full font-bold text-sm sm:text-base md:text-lg text-black transition-all duration-300 hover:opacity-90 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 mt-4 inline-block text-center" 
               style={{ 
                 background: 'linear-gradient(90deg, #04B9B2 0%, #1EC677 100%)',
                 boxShadow: '0 4px 12px rgba(4, 185, 178, 0.3)'
               }}
             >
-              Connect with Us
+              Request Demo
             </a>
           </div>
         </div>

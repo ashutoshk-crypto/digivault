@@ -2,23 +2,7 @@
 
 export default function StickyMobileCTA() {
   const handleConnect = () => {
-    // Scroll to CTA section with proper header offset
-    const ctaSection = document.getElementById('cta');
-    if (ctaSection) {
-      // Dynamically calculate header height to account for different screen sizes
-      const header = document.querySelector('header');
-      const headerHeight = header ? header.getBoundingClientRect().height : 80;
-      
-      // Get the target element's position relative to viewport
-      const elementPosition = ctaSection.getBoundingClientRect().top;
-      // Calculate scroll position accounting for header
-      const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
-
-      window.scrollTo({
-        top: Math.max(0, offsetPosition), // Ensure we don't scroll to negative position
-        behavior: 'smooth'
-      });
-    }
+    window.open('https://form.typeform.com/to/t6Xqnmr1', '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -38,7 +22,7 @@ export default function StickyMobileCTA() {
             boxShadow: '0 4px 12px rgba(4, 185, 178, 0.3)',
           }}
         >
-          Connect with Us
+          Request Demo
         </button>
       </div>
     </div>

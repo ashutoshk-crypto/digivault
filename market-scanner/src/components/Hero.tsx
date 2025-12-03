@@ -198,9 +198,12 @@ export default function Hero() {
                   <br />
                   Digital Asset Custody for India
                 </p>
-                <button className="bg-black text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg flex items-center gap-3 hover:opacity-90 transition-opacity w-full sm:w-auto justify-center sm:justify-start">
+                <button 
+                  onClick={() => window.open('https://form.typeform.com/to/t6Xqnmr1', '_blank', 'noopener,noreferrer')}
+                  className="bg-black text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg flex items-center gap-3 hover:opacity-90 transition-opacity w-full sm:w-auto justify-center sm:justify-start"
+                >
                   <span className="w-3 h-3 bg-green-400 rounded-sm flex-shrink-0"></span>
-                  <span className="font-medium text-sm sm:text-base">Connect with Us</span>
+                  <span className="font-medium text-sm sm:text-base">Request Demo</span>
                 </button>
               </div>
             </div>
@@ -226,7 +229,7 @@ export default function Hero() {
       </div>
 
       {/* Bottom Section - Statistical Cards */}
-      <div ref={statsRef} className="relative mx-auto mb-4 sm:mb-6 lg:mb-10 pb-4 sm:pb-6 px-4 sm:px-6 lg:px-8 w-full max-w-7xl">
+      <div ref={statsRef} className="relative mx-auto mt-6 sm:mt-8 lg:mt-12 mb-4 sm:mb-6 lg:mb-10 pb-4 sm:pb-6 px-4 sm:px-6 lg:px-8 w-full max-w-7xl">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
           <div 
             className="rounded-lg p-3 sm:p-4 lg:p-6 text-left min-h-[90px] sm:min-h-[120px] lg:min-h-[165px] flex flex-col justify-center"

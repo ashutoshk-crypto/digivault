@@ -31,7 +31,7 @@ export default function Footer() {
             className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
           >
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M8 12L3 7L4.4 5.6L8 9.2L11.6 5.6L13 7L8 12Z" fill="currentColor"/>
+              <path d="M8 4L3 9L4.4 10.4L8 6.8L11.6 10.4L13 9L8 4Z" fill="currentColor"/>
             </svg>
             <span className="text-xs sm:text-sm font-medium">Back To Top</span>
           </button>

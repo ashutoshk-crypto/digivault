@@ -19,11 +19,11 @@ export default function WhyChooseUs() {
           {/* Left Side - Text Content */}
           <div className="text-white mb-4 sm:mb-6 lg:mb-0">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 sm:mb-4 leading-tight">
-              Why Choose
-              <br />
-              Us
+              Why Choose Us
             </h2>
-           
+            <p className="text-base sm:text-lg md:text-xl text-white/90 mb-4 sm:mb-6 leading-relaxed">
+              Trusted by India's leading investors with proven expertise in regulatory compliance and enterprise-grade security
+            </p>
           </div>
 
           {/* Right Side - Feature Cards */}
